@@ -12,7 +12,8 @@ const friendsSection = document.getElementById('friends-section');
 
 /* State */
 let message = '';
-let mushrooms = [{ type: 'porcini' }, { type: 'chanterelle' }, { type: 'morel' }];
+// let mushrooms = [{ type: 'porcini' }, { type: 'chanterelle' }, { type: 'morel' }];
+let mushrooms = [];
 
 let friends = [
     { name: 'Wilbur', satisfied: 0 },
@@ -60,8 +61,6 @@ addFriendForm.addEventListener('submit', (e) => {
     e.preventDefault();
 
     const formData = new FormData(addFriendForm);
-    console.log(formData.get('name'));
-    console.log(formData);
 
     // > create a new friend, with a "name" property that
     // is populated from `formData.get('name')` and a
@@ -120,6 +119,12 @@ function displayFriends() {
 
         friendEl.addEventListener('click', () => {
             // > handle the three possible outcomes:
+            if (!mushrooms.length) {
+                message = 'Go find more mushrooms';
+            }
+            // else if (friend.satisfied === 3) {
+            //     message = `${friend.name} is full`;
+            // }
             // 1. No mushrooms, set a message to go hunt for more
             // 2. Friend is already fully satisfied (3), set a message to pick another friend
             // 3. Feed friend mushroom:
