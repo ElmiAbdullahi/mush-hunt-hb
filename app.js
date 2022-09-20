@@ -87,6 +87,9 @@ sayGoodbyeButton.addEventListener('click', () => {
     const stillHungry = [];
     for (const friend of friends) {
         // > if the friend is not fully satisfied, push
+        if (friend.satisfied !== 3) {
+            stillHungry.push(friend);
+        }
         // them into the stillHungry array
     }
     friends = stillHungry;
@@ -132,9 +135,9 @@ function displayFriends() {
                 friend.satisfied++;
                 // b. increase friend.satisfied by 1
                 message = `Yummy tasty ${friend.name} ${eaten.type}`;
+                // c. set a message that the friend enjoyed the mushroom,
+                //    include the friend name and mushroom type in the message
             }
-            // c. set a message that the friend enjoyed the mushroom,
-            //    include the friend name and mushroom type in the message
 
             displayMessage();
             displayMushrooms();
